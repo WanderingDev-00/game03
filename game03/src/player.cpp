@@ -1,26 +1,39 @@
 #include "player.h"
+void updateplayer(float deltatime)
+{
+	player play;
 
-Player::Player(float startX, float startY, SDL_Texture* tex)
-    : x(startX), y(startY), texture(tex) {
+	play.playerpos();
+
+
 }
 
-void Player::update(float deltaTime) {
-    // Basic movement to test logic
-    const bool* keys = SDL_GetKeyboardState(NULL);
+void player::playerpos(float deltatime)
+{
+	const bool* keys = SDL_GetKeyboardState(NULL);
 
-    if (keys[SDL_SCANCODE_W]) y -= speed * deltaTime;
-    if (keys[SDL_SCANCODE_S]) y += speed * deltaTime;
-    if (keys[SDL_SCANCODE_A]) x -= speed * deltaTime;
-    if (keys[SDL_SCANCODE_D]) x += speed * deltaTime;
-}
+	if (keys[SDL_SCANCODE_W])
+	{
+		y -= speed * deltatime;
 
-void Player::draw(SDL_Renderer* renderer) {
-    if (texture) {
-        // Since your logical size is 640x320, 
-        // a 64x64 player will look a decent size.
-        SDL_FRect destRect = { x, y, 64.0f, 64.0f };
+		playeranim = 2; // this says what plaer animation to run
+	}
+	if (keys[SDL_SCANCODE_S])
+	{
+		y += speed * deltatime;
+		playeranim = 3;
+	}
+	if (keys[SDL_SCANCODE_A])
+	{
+		x -= speed * deltatime;
+		playeranim = 4;
+	}
+	if (keys[SDL_SCANCODE_D])
+	{
+		x += speed * deltatime;
+		playeranim = 5;
+	}
 
-        // Draw the texture we stored during construction
-        SDL_RenderTexture(renderer, texture, NULL, &destRect);
-    }
+
+
 }

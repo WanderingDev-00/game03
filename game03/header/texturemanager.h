@@ -11,9 +11,9 @@ struct TextureResource {
 class TextureManager
 {private:std::unordered_map<std::string, TextureResource> texturemap;
 
-public: SDL_Texture* Load(SDL_Renderer* renderer, const std::string& id , const std::string& filepath);
+public: SDL_Texture*Load(SDL_Renderer* renderer, const std::string& id , const std::string& filepath);
       void unload(const std::string& id);
       void ALLTexclear();
-      SDL_Texture* gettex(const std::string& id, const std::string& filepath);
+      SDL_Texture* gettex(const std::string& id);
 
       };

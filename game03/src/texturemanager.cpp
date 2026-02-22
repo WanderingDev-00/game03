@@ -42,19 +42,16 @@ void TextureManager::ALLTexclear()
 {
 	for (auto& [id, resource] : texturemap)
 	{
-		SDL_DestroyTexture(resource.tex);
+		SDL_DestroyTexture(resource.tex);//destroys the texture from map all of it 
 	}
 	texturemap.clear();
-
+	SDL_Log("all texture cleared");
 }
-SDL_Texture* TextureManager::gettex(const std::string& id, const std::string& filepath)
+SDL_Texture* TextureManager::gettex(const std::string& id)
 {
-	auto entry = texturemap.find(id);
-	if (entry != texturemap.end())
-	{
-		Load(SDL_Renderer * renderer, const std::string & id, const std::string & filepath);
-	}
-	return  entry->second.tex;
+	auto it = texturemap.find(id);
+	return (it != texturemap.end()) ? it->second.tex : nullptr;
 }
+
 
 

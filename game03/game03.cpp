@@ -4,6 +4,7 @@
 #include<SDL3/SDL_render.h>
 #include "texturemanager.h"
 #include "player.h"
+#include"tickupdate.h"
 struct sdlstate //holds variable for sdl init and refer and use
 {
 	SDL_Window* window;
@@ -34,12 +35,12 @@ int main(int argc, char* argv[])
 
 	// 1. Load the player texture using YOUR manager's load function
 	// This gives us the pointer and sets refcount to 1.
-	SDL_Texture* playerTex = texMgr.load(state.renderer, "hero", "assets/player.png");
+	SDL_Texture* playerTex = texMgr.Load(state.renderer, "hero", "assets/player.png");
 
 	// 2. Create the player and give them that pointer
 	Player* hero = new Player(100, 100, playerTex);
 
-	Uint64 lastTime = SDL_GetTicks(); // For deltaTime calculation
+	Uint64 lastTime = SDL_GetTicks(); // For deltatime calculation
 	bool running = true;
 
 	while (running) {
@@ -51,10 +52,10 @@ int main(int argc, char* argv[])
 
 		// --- 2. LOGIC / UPDATE ---
 		Uint64 currentTime = SDL_GetTicks();
-		float deltaTime = (currentTime - lastTime) / 1000.0f;
+		float deltatime = (currentTime - lastTime) / 1000.0f;
 		lastTime = currentTime;
 
-		hero->update(deltaTime);
+		hero->update(deltatime);
 
 		// --- 3. RENDERING ---
 		SDL_SetRenderDrawColor(state.renderer, 225, 0, 225, 255); // Pink background
@@ -68,7 +69,7 @@ int main(int argc, char* argv[])
 
 	// --- CLEANUP ---
 	delete hero;
-	texMgr.clear();
+	texMgr.ALLTexclear();
 	cleanup(state);
 	return 0;
 
