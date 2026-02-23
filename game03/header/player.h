@@ -1,6 +1,7 @@
 #pragma once
 #include"tickupdate.h"
 #include<SDL3/SDL.h>
+#include"animtimer.h"
 
 class player
 {
@@ -11,7 +12,7 @@ private: float x, y;
 public:
 	void playerpos(float deltatime);
 
-
+	void playeranimation(int playeranim);
 
 
 };

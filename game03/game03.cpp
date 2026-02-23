@@ -32,13 +32,10 @@ int main(int argc, char* argv[])
 	
 
 	TextureManager texMgr;
+	player play;
 
-	// 1. Load the player texture using YOUR manager's load function
-	// This gives us the pointer and sets refcount to 1.
-	SDL_Texture* playerTex = texMgr.Load(state.renderer, "hero", "assets/player.png");
 
-	// 2. Create the player and give them that pointer
-	Player* hero = new Player(100, 100, playerTex);
+	
 
 	Uint64 lastTime = SDL_GetTicks(); // For deltatime calculation
 	bool running = true;
@@ -54,21 +51,21 @@ int main(int argc, char* argv[])
 		Uint64 currentTime = SDL_GetTicks();
 		float deltatime = (currentTime - lastTime) / 1000.0f;
 		lastTime = currentTime;
+		update(play, deltatime);
 
-		hero->update(deltatime);
 
 		// --- 3. RENDERING ---
 		SDL_SetRenderDrawColor(state.renderer, 225, 0, 225, 255); // Pink background
 		SDL_RenderClear(state.renderer);
 
 		// Draw the hero!
-		hero->draw(state.renderer);
+	
 
 		SDL_RenderPresent(state.renderer);
 	}
 
 	// --- CLEANUP ---
-	delete hero;
+	
 	texMgr.ALLTexclear();
 	cleanup(state);
 	return 0;

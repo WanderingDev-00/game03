@@ -1,5 +1,6 @@
 #pragma once
-void updateplayer(float deltatime);
-void updatemap(float deltatime);
-void updatecamera(float deltatime);
-void update(float deltatime);
+class player;
+void updateplayer(player& play ,float deltatime);
+void updatemap(player& play,float deltatime);
+void updatecamera(player& play,float deltatime);
+void update(player& play,float deltatime);
