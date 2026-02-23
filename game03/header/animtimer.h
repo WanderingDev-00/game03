@@ -1,19 +1,23 @@
-
 #pragma once
 #include <SDL3/SDL.h>
-#include <SDL3_image/SDL_image.h>
 
 class animation
-{private: float timer = 0.0f;
-float speed = 0.1f;    // Duration of each frame
-int currentframe = 0;
-int totalframes = 1;
+{
+private:
+    float timer = 0.0f;
+    float speed = 0.1f;      // Duration per frame
+    int currentframe = 0;
+    int totalframes = 4;     // How many frames in this animation
+    int framewidth = 32;     // Size of ONE frame
+    int frameheight = 32;
+    int currentrow = 0;      // Which row in spritesheet
 
-// Layout (The "Dealer" info)
-int framewidth = 32;   // Size of a single frame
-int frameheight = 32;
-int currentrow = 0;
+public:
+    void animtimerupdate(float deltatime);
+    SDL_Rect getSrcRect();
 
-public: void animtimerupdate(float deltatime);
-	  SDL_Rect getSrcRect();
+    //  Methods to configure animation
+    void setAnimation(int row, int totalFrames);
+    int getCurrentFrame() const { return currentframe; }
+    int getTotalFrames() const { return totalframes; }
 };

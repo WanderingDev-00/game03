@@ -1,26 +1,45 @@
 #include "gamerender.h"
-#include"player.h"
-#include"tickupdate.h"
-#include"texturemanager.h"
-#include"animtimer.h"
 
-player play;
-
-
-
-void Gamerender:: preparerenderer(SDL_Renderer* renderer)
+void Gamerender::init(TextureManager& texManager)
 {
-	SDL_SetRenderDrawColor(renderer, 225, 0, 225, 255); // Pink background
-	SDL_RenderClear(renderer);
+    texMgr = &texManager;
+
+    //  Add player to entity list
+    entities.push_back(&play);
 }
 
-void Gamerender::rendererdraw(SDL_Renderer* renderer)
+void Gamerender::preparerenderer(SDL_Renderer* renderer)
 {
+    SDL_SetRenderDrawColor(renderer, 225, 0, 225, 255);
+    SDL_RenderClear(renderer);
+}
 
+//  Update all entities
+void Gamerender::updateAll(float deltaTime)
+{
+    for (auto entity : entities) {
+        entity->update(deltaTime);  //  Calls player::update()
+    }
+}
 
-	play.playeranimation(playeranim);
-	
+//  Draw all entities
+void Gamerender::drawAll(SDL_Renderer* renderer)
+{
+    for (auto entity : entities) {
+        // Get player-specific data
+        if (entity->getType() == "player") {
+            player* p = dynamic_cast<player*>(entity);
+            SDL_Rect srcRect = p->getAnimationFrame();
+            SDL_Texture* tex = texMgr->gettex("player_spritesheet");
 
-	
-
+            if (tex) {
+                SDL_Rect destRect = {
+                    (int)p->getX(),
+                    (int)p->getY(),
+                    64, 64
+                };
+                SDL_RenderTexture(renderer, tex, &srcRect, &destRect);
+            }
+        }
+    }
 }

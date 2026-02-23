@@ -34,34 +34,32 @@ int main(int argc, char* argv[])
 	
 
 	TextureManager texMgr;
-	player play;
 	Gamerender render;
+	render.init(texMgr);
 
-	
+	// ... load textures ...
 
-	Uint64 lastTime = SDL_GetTicks(); // For deltatime calculation
+	Uint64 lastTime = SDL_GetTicks();
 	bool running = true;
 
 	while (running) {
-		// --- 1. EVENT HANDLING ---
+		// Event handling
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_EVENT_QUIT) running = false;
 		}
 
-		// --- 2. LOGIC / UPDATE ---
+		// Calculate deltatime
 		Uint64 currentTime = SDL_GetTicks();
 		float deltatime = (currentTime - lastTime) / 1000.0f;
 		lastTime = currentTime;
-		update(play, deltatime);
 
+		// ONE CALL: Master update function
+		update(render, deltatime);
 
-		// --- 3. RENDERING ---
+		// Render
 		render.preparerenderer(state.renderer);
-
-		// Draw 
-		render.rendererdraw(state.renderer);
-
+		render.drawAll(state.renderer);
 		SDL_RenderPresent(state.renderer);
 	}
 

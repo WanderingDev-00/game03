@@ -1,49 +1,72 @@
 #include "player.h"
 #include "texturemanager.h"
-#include "animtimer.h"
-animation anim;
-void updateplayer(player& play ,float deltatime)
+
+// ✅ NEW: This is what update() does for the player
+void player::update(float deltaTime)
 {
-	
-
-	play.playerpos(deltatime);
-
-
+    playerpos(deltaTime);           // Update position based on input
+    updateAnimation(deltaTime);     // Update animation frame
 }
 
+// ✅ NEW: This is what draw() does for the player
+void player::draw(SDL_Renderer* renderer)
+{
+    // Renderer will call this, passing the renderer
+    // You'll draw the player here using the texture manager
+    // (We'll show this part in gamerender.cpp instead)
+}
+
+// ✅ UNCHANGED: Your original methods stay
 void player::playerpos(float deltatime)
 {
     const bool* keys = SDL_GetKeyboardState(NULL);
-    bool moving = false; // Track if ANY key is pressed
+    bool moving = false;
 
     if (keys[SDL_SCANCODE_W]) {
         y -= speed * deltatime;
-        playeranim = 2;
+        currentAnimState = 2;
         moving = true;
     }
     if (keys[SDL_SCANCODE_S]) {
         y += speed * deltatime;
-        playeranim = 3;
+        currentAnimState = 3;
         moving = true;
     }
     if (keys[SDL_SCANCODE_A]) {
         x -= speed * deltatime;
-        playeranim = 4;
+        currentAnimState = 4;
         moving = true;
     }
     if (keys[SDL_SCANCODE_D]) {
         x += speed * deltatime;
-        playeranim = 5;
+        currentAnimState = 5;
         moving = true;
     }
 
-    // If no keys are pressed, switch to Idle animation
     if (!moving) {
-        playeranim = 1; // 1 = Idle
+        currentAnimState = 1;
     }
 }
 
-void player::playeranimation(int playeranim)
+void player::updateAnimation(float deltatime)
 {
-    anim.getSrcRect();
+    playerAnim.animtimerupdate(deltatime);
+
+    switch (currentAnimState) {
+    case 1:
+        playerAnim.setAnimation(0, 4);
+        break;
+    case 2:
+        playerAnim.setAnimation(1, 4);
+        break;
+    case 3:
+        playerAnim.setAnimation(2, 4);
+        break;
+    case 4:
+        playerAnim.setAnimation(3, 4);
+        break;
+    case 5:
+        playerAnim.setAnimation(4, 4);
+        break;
+    }
 }

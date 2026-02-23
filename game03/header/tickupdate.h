@@ -1,6 +1,10 @@
 #pragma once
-class player;
-void updateplayer(player& play ,float deltatime);
-void updatemap(player& play,float deltatime);
-void updatecamera(player& play,float deltatime);
-void update(player& play,float deltatime);
+class Gamerender;  // Forward declare
+
+//MAIN: This is what main loop calls
+void update(Gamerender& render, float deltatime);
+
+//  HELPERS: Called by update()
+void updateEntities(Gamerender& render, float deltatime);
+void updateMap(float deltatime);
+void updateCamera(float deltatime);
