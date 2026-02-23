@@ -5,6 +5,8 @@
 #include "texturemanager.h"
 #include "player.h"
 #include"tickupdate.h"
+#include"gamerender.h"
+
 struct sdlstate //holds variable for sdl init and refer and use
 {
 	SDL_Window* window;
@@ -33,7 +35,7 @@ int main(int argc, char* argv[])
 
 	TextureManager texMgr;
 	player play;
-
+	Gamerender render;
 
 	
 
@@ -55,11 +57,10 @@ int main(int argc, char* argv[])
 
 
 		// --- 3. RENDERING ---
-		SDL_SetRenderDrawColor(state.renderer, 225, 0, 225, 255); // Pink background
-		SDL_RenderClear(state.renderer);
+		render.preparerenderer(state.renderer);
 
-		// Draw the hero!
-	
+		// Draw 
+		render.rendererdraw(state.renderer);
 
 		SDL_RenderPresent(state.renderer);
 	}

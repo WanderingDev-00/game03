@@ -12,14 +12,14 @@ set(HEADER_FILES
     "header/animtimer.h"
     "header/texturemanager.h"
     "header/entity.h"
- "header/player.h" "header/tickupdate.h" )
+ "header/player.h" "header/tickupdate.h"  "header/gamerender.h")
 
 set(SOURCE_FILES
     "game03.cpp"          
     "src/animation.cpp"
     "src/player.cpp"
  "src/texturemanager.cpp"
-"src/tickupdate.cpp")
+"src/tickupdate.cpp" "src/gamerender.cpp")
 
 # 3. Create the Executable
 add_executable(game03 ${SOURCE_FILES} ${HEADER_FILES})

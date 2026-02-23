@@ -1,4 +1,7 @@
 #include "player.h"
+#include "texturemanager.h"
+#include "animtimer.h"
+animation anim;
 void updateplayer(player& play ,float deltatime)
 {
 	
@@ -42,5 +45,5 @@ void player::playerpos(float deltatime)
 
 void player::playeranimation(int playeranim)
 {
-	
+    anim.getSrcRect();
 }
