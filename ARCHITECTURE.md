@@ -34,7 +34,7 @@ MAIN LOOP (repeats every frame)
 └─ Repeat
 ```
 
-This is the **standard game loop pattern** used in all games.
+This is the **standard game loop pattern** used in most games.
 
 ---
 
