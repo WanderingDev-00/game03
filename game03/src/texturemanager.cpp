@@ -12,6 +12,7 @@ SDL_Texture* TextureManager::Load(SDL_Renderer* renderer, const std::string& id,
 
 	}
 	SDL_Texture* newtex = IMG_LoadTexture(renderer, filepath.c_str());
+	SDL_SetTextureScaleMode(newtex, SDL_SCALEMODE_NEAREST);
 	if (!newtex)
 	{
 		SDL_Log("Failed to load %s: %s", filepath.c_str(), SDL_GetError());
@@ -19,6 +20,7 @@ SDL_Texture* TextureManager::Load(SDL_Renderer* renderer, const std::string& id,
 
 	}
 	texturemap[id] = { newtex,1 };
+	SDL_Log("texture loaded");
 	return newtex;
 }
 void TextureManager::unload(const std::string& id)

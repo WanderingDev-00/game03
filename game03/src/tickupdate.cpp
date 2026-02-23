@@ -5,8 +5,8 @@
 void update(Gamerender& render, float deltatime)
 {
     updateEntities(render, deltatime);  // Update player, enemies, etc
-    updateMap(deltatime);                // Update map stuff
-    updateCamera(deltatime);             // Update camera
+    //updateMap(deltatime);                // Update map stuff
+    //updateCamera(deltatime);             // Update camera
 }
 
 //  NEW: Update all entities (replaces old updateplayer)

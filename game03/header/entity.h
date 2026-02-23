@@ -9,7 +9,7 @@ public:
 
     // 1. Logic Update
     // We pass deltaTime so movement is smooth regardless of FPS
-    virtual void update(float deltaTime) = 0;
+    virtual void updateEntity(float deltaTime) = 0;
 
     // 2. Simple Render
     // We only pass the renderer. No camera, no manager for now.

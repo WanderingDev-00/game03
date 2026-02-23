@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
 {
 
 	sdlstate state;
-	state.width = 1600;
-	state.height = 800;
+	state.width = 900;
+    state.height = 900;
 	if (!init(state))
 	{
 		return -1;
@@ -36,6 +36,7 @@ int main(int argc, char* argv[])
 	TextureManager texMgr;
 	Gamerender render;
 	render.init(texMgr);
+	texMgr.Load(state.renderer, "player_Idle", "assets/player/player_idle.png");
 
 	// ... load textures ...
 
@@ -97,7 +98,8 @@ bool init(sdlstate& state)
 	}
 	state.logw = 640;
 	state.logh = 320;
-	SDL_SetRenderLogicalPresentation(state.renderer, state.logw, state.logh, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+	SDL_SetRenderLogicalPresentation(state.renderer, state.logw, state.logh,SDL_LOGICAL_PRESENTATION_DISABLED);
+
 	return initsuccess;
 }
 void cleanup(sdlstate& state)

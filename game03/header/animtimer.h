@@ -5,7 +5,7 @@ class animation
 {
 private:
     float timer = 0.0f;
-    float speed = 0.1f;      // Duration per frame
+    float animspeed = 0.5f;      // Duration per frame
     int currentframe = 0;
     int totalframes = 4;     // How many frames in this animation
     int framewidth = 32;     // Size of ONE frame
@@ -14,9 +14,9 @@ private:
 
 public:
     void animtimerupdate(float deltatime);
-    SDL_Rect getSrcRect();
-
-    //  Methods to configure animation
+    SDL_Rect getSrcRect() const ;
+     
+    //  Methods to configure animation 
     void setAnimation(int row, int totalFrames);
     int getCurrentFrame() const { return currentframe; }
     int getTotalFrames() const { return totalframes; }

@@ -1,19 +1,33 @@
 #include "player.h"
 #include "texturemanager.h"
 #include"animtimer.h"
+
 //  This is what update() does for the player
-void player::update(float deltaTime)
+void player::updateEntity(float deltaTime)
 {
     playerpos(deltaTime);           // Update position based on input
-    updateAnimation(deltaTime);     // Update animation frame
+    updateAnimation(deltaTime); 
+   // SDL_Log("updatesucess");
+    // Update animation frame
 }
 
 //  This is what draw() does for the player
 void player::draw(SDL_Renderer* renderer)
 {
-    // Renderer will call this, passing the renderer
-    // You'll draw the player here using the texture manager
-    // (We'll show this part in gamerender.cpp instead)
+    if (currentAnimState == 1)
+    {
+        SDL_Texture* ptex  = texmgr.gettex("player_Idle");
+        SDL_Rect srcRect = getAnimationFrame();
+        SDL_FRect fr = { (float)srcRect.x, (float)srcRect.y, (float)srcRect.w, (float)srcRect.h };
+        SDL_FRect destRect = { playerx,playery,32,32
+        };
+        
+        SDL_RenderTexture(renderer, ptex, &fr , &destRect);
+     }
+
+   
+   // Adjust height by scale if needed
+
 }
 
 
@@ -23,28 +37,29 @@ void player::playerpos(float deltatime)
     bool moving = false;
 
     if (keys[SDL_SCANCODE_W]) {
-        y -= speed * deltatime;
+        playery -= speed * deltatime;
         currentAnimState = 2;
         moving = true;
     }
     if (keys[SDL_SCANCODE_S]) {
-        y += speed * deltatime;
+       playery += speed * deltatime;
         currentAnimState = 3;
         moving = true;
     }
     if (keys[SDL_SCANCODE_A]) {
-        x -= speed * deltatime;
+        playerx -= speed * deltatime;
         currentAnimState = 4;
         moving = true;
     }
     if (keys[SDL_SCANCODE_D]) {
-        x += speed * deltatime;
+        playerx += speed * deltatime;
         currentAnimState = 5;
         moving = true;
     }
 
     if (!moving) {
-        currentAnimState = 1;
+        currentAnimState = 1; 
+       
     }
 }
 

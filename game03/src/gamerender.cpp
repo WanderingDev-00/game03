@@ -1,5 +1,6 @@
 #include "gamerender.h"
 
+
 void Gamerender::init(TextureManager& texManager)
 {
     texMgr = &texManager;
@@ -18,7 +19,7 @@ void Gamerender::preparerenderer(SDL_Renderer* renderer)
 void Gamerender::updateAll(float deltaTime)
 {
     for (auto entity : entities) {
-        entity->update(deltaTime);  //  Calls player::update()
+        entity->updateEntity(deltaTime);  //  Calls player::update()
     }
 }
 
@@ -30,16 +31,17 @@ void Gamerender::drawAll(SDL_Renderer* renderer)
         if (entity->getType() == "player") {
             player* p = dynamic_cast<player*>(entity);
             SDL_Rect srcRect = p->getAnimationFrame();
-            SDL_Texture* tex = texMgr->gettex("player_spritesheet");
+            SDL_FRect csrcRect = { (float)srcRect.x, (float)srcRect.y, (float)srcRect.w, (float)srcRect.h };
+            SDL_Texture* tex = texMgr->gettex("player_Idle");
 
             if (tex) {
-                SDL_Rect destRect = {
-                    (int)p->getX(),
-                    (int)p->getY(),
+                SDL_FRect destRect = {
+                    (float)p->getX(),
+                    (float)p->getY(),
                     64, 64
                 };
-                SDL_RenderTexture(renderer, tex, &srcRect, &destRect);
+                SDL_RenderTexture(renderer, tex, &csrcRect, &destRect);
             }
         }
     }
-}
+} 

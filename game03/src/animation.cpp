@@ -1,11 +1,12 @@
 #include "animtimer.h"
 
+
 void animation::animtimerupdate(float deltatime)
 {
     timer += deltatime;
-    if (timer >= speed)
+    if (timer >= animspeed)
     {
-        timer -= speed;
+        timer -= animspeed;
         currentframe++;
     }
 
@@ -15,7 +16,7 @@ void animation::animtimerupdate(float deltatime)
     }
 }
 
-SDL_Rect animation::getSrcRect()
+SDL_Rect animation::getSrcRect() const
 {
     return { currentframe * framewidth,
              currentrow * frameheight,
