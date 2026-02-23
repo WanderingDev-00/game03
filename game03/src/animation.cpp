@@ -23,7 +23,7 @@ SDL_Rect animation::getSrcRect()
              frameheight };
 }
 
-// ✅ ADD: Configure which animation row + frames
+// Configure which animation row + frames
 void animation::setAnimation(int row, int totalFrames)
 {
     if (currentrow != row) {

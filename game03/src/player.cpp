@@ -1,14 +1,14 @@
 #include "player.h"
 #include "texturemanager.h"
-
-// ✅ NEW: This is what update() does for the player
+#include"animtimer.h"
+//  This is what update() does for the player
 void player::update(float deltaTime)
 {
     playerpos(deltaTime);           // Update position based on input
     updateAnimation(deltaTime);     // Update animation frame
 }
 
-// ✅ NEW: This is what draw() does for the player
+//  This is what draw() does for the player
 void player::draw(SDL_Renderer* renderer)
 {
     // Renderer will call this, passing the renderer
@@ -16,7 +16,7 @@ void player::draw(SDL_Renderer* renderer)
     // (We'll show this part in gamerender.cpp instead)
 }
 
-// ✅ UNCHANGED: Your original methods stay
+
 void player::playerpos(float deltatime)
 {
     const bool* keys = SDL_GetKeyboardState(NULL);
