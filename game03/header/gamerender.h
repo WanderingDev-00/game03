@@ -4,6 +4,7 @@
 #include "entity.h"
 #include "player.h"
 #include "texturemanager.h"
+#include"textureloader.h"
 
 
 class Gamerender

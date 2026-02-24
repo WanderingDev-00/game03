@@ -19,7 +19,7 @@ set(SOURCE_FILES
     "src/animation.cpp"
     "src/player.cpp"
  "src/texturemanager.cpp"
-"src/tickupdate.cpp" "src/gamerender.cpp" "src/textureloader.cpp")
+"src/tickupdate.cpp" "src/gamerender.cpp" "src/textureloader.cpp" "src/gamesave.cpp")
 
 # 3. Create the Executable
 add_executable(game03 ${SOURCE_FILES} ${HEADER_FILES})

@@ -32,7 +32,12 @@ void Gamerender::drawAll(SDL_Renderer* renderer)
             player* p = dynamic_cast<player*>(entity);
             SDL_Rect srcRect = p->getAnimationFrame();
             SDL_FRect csrcRect = { (float)srcRect.x, (float)srcRect.y, (float)srcRect.w, (float)srcRect.h };
-            SDL_Texture* tex = texMgr->gettex("player_Idle");
+            SDL_Texture* tex = texMgr->gettex("Player_Idle");
+            if (tex == nullptr)
+            {
+                SDL_Log("texturegetfail");
+            }
+            
 
             if (tex) {
                 SDL_FRect destRect = {
@@ -41,6 +46,7 @@ void Gamerender::drawAll(SDL_Renderer* renderer)
                     64, 64
                 };
                 SDL_RenderTexture(renderer, tex, &csrcRect, &destRect);
+                SDL_Log("textureloadedtodraw");
             }
         }
     }

@@ -35,8 +35,11 @@ int main(int argc, char* argv[])
 
 	TextureManager texMgr;
 	Gamerender render;
+	loadAreatex textureload;
 	render.init(texMgr);
-	texMgr.Load(state.renderer, "player_Idle", "assets/player/player_idle.png");
+	
+	textureload.loadAreaTexture(state.renderer);
+
 
 	// ... load textures ...
 
@@ -57,6 +60,7 @@ int main(int argc, char* argv[])
 
 		// ONE CALL: Master update function
 		update(render, deltatime);
+		
 
 		// Render
 		render.preparerenderer(state.renderer);

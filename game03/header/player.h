@@ -13,7 +13,8 @@ private:
     float speed = 100.0f;
     int currentAnimState = 1;
     animation playerAnim;
-    TextureManager texmgr;
+    TextureManager* texmgr;
+    float playerinarea=0;
 
 
 public:
@@ -28,4 +29,5 @@ public:
     void playerpos(float deltatime);
     void updateAnimation(float deltatime);
     SDL_Rect getAnimationFrame()const { return playerAnim.getSrcRect(); }
+    float giveplayerareano()const { return playerinarea; }
 };

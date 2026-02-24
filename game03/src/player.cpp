@@ -16,7 +16,7 @@ void player::draw(SDL_Renderer* renderer)
 {
     if (currentAnimState == 1)
     {
-        SDL_Texture* ptex  = texmgr.gettex("player_Idle");
+        SDL_Texture* ptex  = texmgr->gettex("Player_Idle");
         SDL_Rect srcRect = getAnimationFrame();
         SDL_FRect fr = { (float)srcRect.x, (float)srcRect.y, (float)srcRect.w, (float)srcRect.h };
         SDL_FRect destRect = { playerx,playery,32,32
