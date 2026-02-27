@@ -2,7 +2,8 @@
 
 
 #include<SDL3/SDL.h>
-class game 
+
+class Game 
 {
     
    private: //std::unique_ptr<IRenderer> renderer;      // Could be SDL3, OpenGL, etc.
@@ -10,12 +11,15 @@ class game
            // std::unique_ptr<IPhysicsEngine> physics; 
         SDL_Window* window;
        SDL_Renderer* renderer;
+       int logh, logw, width, height;
+       bool running;
      
      
 
     // Main methods
-   public:   int logh, logw, width, height;
-            bool initialize(game& state);  // Start the game
+   public:   
+            bool initialize(SDL_Window* window ,SDL_Renderer* renderer);  // Start the game
             void run();         // Game loop
-            void cleanup(game& state);    // Clean up
+            void cleanup(SDL_Window* window, SDL_Renderer* renderer);
+            int  getwindowsize(int width , int height) { return width,  height; } // Clean up
 };
