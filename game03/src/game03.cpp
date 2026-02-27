@@ -33,12 +33,6 @@ int main(int argc, char* argv[])
 	}
 	
 
-	TextureManager texMgr;
-	Gamerender render;
-	loadAreatex textureload;
-	render.init(texMgr);
-	
-	textureload.loadAreaTexture(state.renderer);
 
 
 	// ... load textures ...
@@ -59,12 +53,11 @@ int main(int argc, char* argv[])
 		lastTime = currentTime;
 
 		// ONE CALL: Master update function
-		update(render, deltatime);
+	
 		
 
 		// Render
-		render.preparerenderer(state.renderer);
-		render.drawAll(state.renderer);
+
 		SDL_RenderPresent(state.renderer);
 	}
 
