@@ -10,15 +10,15 @@ find_package(SDL3_image REQUIRED)
 # Others are in their respective folders.
 set(HEADER_FILES
     "src/engine/core/game.h"
-    )
+     "src/engine/core/game_loop.h"  "src/engine/core/time_manager.h")
 
 set(SOURCE_FILES
     "game03.cpp" 
-    "src/engine/core/game.cpp"
-    )
+    "src/engine/core/game.cpp""src/engine/core/game_loop.cpp"
+     "src/engine/core/time_manager.cpp")
 
 # 3. Create the Executable
-add_executable(game03 ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(game03 ${SOURCE_FILES} ${HEADER_FILES} )
 
 # 4. Target Settings
 target_compile_features(game03 PRIVATE cxx_std_20)
