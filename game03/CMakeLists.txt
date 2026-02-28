@@ -10,12 +10,12 @@ find_package(SDL3_image REQUIRED)
 # Others are in their respective folders.
 set(HEADER_FILES
     "src/engine/core/game.h"
-     "src/engine/core/game_loop.h"  "src/engine/core/time_manager.h")
+     "src/engine/core/game_loop.h"  "src/engine/core/time_manager.h""src/engine/interfaces/renderer_interface.h" "src/engine/input/input_manager.h" "src/engine/interfaces/audio_interface.h" "src/engine/interfaces/physics_interface.h" "src/engine/interfaces/save_interface.h" "src/engine/interfaces/time_interface.h")
 
 set(SOURCE_FILES
     "game03.cpp" 
     "src/engine/core/game.cpp""src/engine/core/game_loop.cpp"
-     "src/engine/core/time_manager.cpp")
+     "src/engine/core/time_manager.cpp" "src/engine/input/input_manager.cpp")
 
 # 3. Create the Executable
 add_executable(game03 ${SOURCE_FILES} ${HEADER_FILES} )

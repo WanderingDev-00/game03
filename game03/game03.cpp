@@ -14,8 +14,8 @@ struct sdlstate
 
 int main(int argc, char* argv[])
 {
-
-	Game game;
+	
+	Game& game= Game::getInstance();
 	sdlstate state;
 	Time t;
 	game.getwindowsize(state.width,state.height);
@@ -25,6 +25,7 @@ int main(int argc, char* argv[])
 	{
 		return -1;
 	}
+
 
 
 	game.cleanup(state.window, state.renderer);
