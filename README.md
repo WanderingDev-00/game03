@@ -4,5 +4,5 @@ this project is for development of a small working good program that will help m
 ## changes
 
 there is gonna be a huge rehaul to structure and code i thought doing engine and game separate with modularity good but it kinda getting confusing
-so here is the thing i am gonna completely make a game i wont try modular i wanted modular so i could like distribute it to people as a template but its a pain
+so here is the thing. i am gonna completely make a game i wont try modular. i wanted modular so i could like distribute it to people as a template but its a pain
 
