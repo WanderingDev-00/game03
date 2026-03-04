@@ -1,7 +1,7 @@
 #include"game.h"
 
 
-bool Game::initialize(SDL_Window* window, SDL_Renderer* renderer)
+bool Game::initialize()
 
 {
 
@@ -29,6 +29,7 @@ bool Game::initialize(SDL_Window* window, SDL_Renderer* renderer)
 	logw = 640;
 	logh = 320;
 	SDL_SetRenderLogicalPresentation(renderer, logw, logh, SDL_LOGICAL_PRESENTATION_DISABLED);
+	gamerender.init(texmgr);
 
 	return initsuccess;
 
@@ -36,6 +37,7 @@ bool Game::initialize(SDL_Window* window, SDL_Renderer* renderer)
 
 void Game::cleanup(SDL_Window* window, SDL_Renderer* renderer)
 {
+	texmgr.ALLTexclear();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

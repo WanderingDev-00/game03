@@ -11,8 +11,21 @@ struct TextureResource {
 class TextureManager
 {
 private:std::unordered_map<std::string, TextureResource> texturemap;
+       // Private constructor - can't create instances from outside
+       TextureManager() = default;
 
-public: SDL_Texture* Load(SDL_Renderer* renderer, const std::string& id, const std::string& filepath);
+       // Delete copy constructor and assignment operator
+       TextureManager(const TextureManager&) = delete;
+       TextureManager& operator=(const TextureManager&) = delete;
+
+public:
+    static  TextureManager& getInstance() {
+    static  TextureManager instance;  // Created only once
+    return instance;
+}
+    
+    
+    SDL_Texture* Load(SDL_Renderer* renderer, const std::string& id, const std::string& filepath);
       void unload(const std::string& id);
       void ALLTexclear();
       SDL_Texture* gettex(const std::string& id);

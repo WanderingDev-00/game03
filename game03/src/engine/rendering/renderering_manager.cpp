@@ -30,13 +30,13 @@ void Gamerender::drawAll(SDL_Renderer* renderer)
         // Get player-specific data
         if (entity->getType() == "player") {
             player* p = dynamic_cast<player*>(entity);
-            SDL_Rect srcRect = p->getAnimationFrame();
+            SDL_FRect srcRect = p->getAnimationFrame();
             SDL_Texture* tex = texMgr->gettex("player_spritesheet");
 
             if (tex) {
-                SDL_Rect destRect = {
-                    (int)p->getX(),
-                    (int)p->getY(),
+                SDL_FRect destRect = {
+                    (float)p->getX(),
+                    (float)p->getY(),
                     64, 64
                 };
                 SDL_RenderTexture(renderer, tex, &srcRect, &destRect);

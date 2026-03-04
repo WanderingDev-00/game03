@@ -11,9 +11,10 @@ private:
     float y = 100.0f;
     float speed = 200.0f;
     int currentAnimState = 1;
-    animation playerAnim;
+    animation playerAnim ;
 
 public:
+
     // IMPLEMENT Entity's virtual methods
     void update(float deltaTime) override;
     void draw(SDL_Renderer* renderer) override;
@@ -24,5 +25,5 @@ public:
     // Keep your helper methods
     void playerpos(float deltatime);
     void updateAnimation(float deltatime);
-    SDL_Rect getAnimationFrame() const { return playerAnim.getSrcRect(); }
-};
+    SDL_FRect getAnimationFrame() const { return playerAnim.getSrcRect(); } // const because The compiler helps prevent accidental modification of data members within a const function, reducing bugs.
+}; 

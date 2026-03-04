@@ -4,8 +4,8 @@
 
 struct sdlstate
 {
-	SDL_Window* window;
-	SDL_Renderer* renderer;
+	SDL_Window* window = nullptr;
+	SDL_Renderer* renderer= nullptr;
 	int logh, logw, width, height;
 
 };
@@ -17,14 +17,19 @@ int main(int argc, char* argv[])
 	Game& game = Game::getInstance();
 	sdlstate state;
 	TimeCalc& timer = TimeCalc::getInstance();
+	TextureManager& texmgr = TextureManager::getInstance();
 
-	game.getwindowsize(state.width, state.height);
+	state.width = 640;
+	state.height = 320;
 
-	if (!game.initialize(state.window, state.renderer))
+
+    game.getwindowsize(state.width, state.height);
+
+	if (!game.initialize())
 	{
 		return -1;
 	}
-
+	texmgr.Load(state.renderer, "player_idle", "assets/player/player_idle.png");
 	timer.getlasttime();
 	game.run();
 

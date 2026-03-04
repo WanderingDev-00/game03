@@ -10,7 +10,10 @@ void Game::run()
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_EVENT_QUIT) running = false;
 		}
-		timer.getdeltatime();
+		deltatime = timer.getdeltatime();
+		gamerender.updateAll(deltatime);
+		gamerender.preparerenderer(renderer);
+		gamerender.drawAll(renderer);
 
 	}
 

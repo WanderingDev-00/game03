@@ -15,7 +15,7 @@ void animation::animtimerupdate(float deltatime)
     }
 }
 
-SDL_Rect animation::getSrcRect()
+SDL_FRect animation::getSrcRect()const
 {
     return { currentframe * framewidth,
              currentrow * frameheight,

@@ -1,9 +1,11 @@
 #pragma once
-#include"src/engine/time/time_manager.h"
-
+#include"engine/time/time_manager.h"
+#include<engine/rendering/rendering_manager.h>
+#include"engine/rendering/texturemanager.h"
 
 #include<SDL3/SDL.h>
-
+class Gamerender;
+class TextureManager;
 
 class Game
 {
@@ -13,9 +15,14 @@ private: //std::unique_ptr<IRenderer> renderer;      // Could be SDL3, OpenGL, e
     // std::unique_ptr<IPhysicsEngine> physics; 
     SDL_Window* window;
     SDL_Renderer* renderer;
-    int logh, logw, width, height;
-    bool running;
+    int logh =320, logw=640, width, height;
+    bool running ;
     TimeCalc& timer = TimeCalc::getInstance();
+    Gamerender&  gamerender = Gamerender::getInstance();
+
+    TextureManager& texmgr = TextureManager::getInstance();
+
+    float deltatime;
 
     // Private constructor - can't create instances from outside
     Game() = default;
@@ -33,11 +40,11 @@ public:
         static Game instance;  // Created only once
         return instance;
     }
-    bool initialize(SDL_Window* window, SDL_Renderer* renderer);  // Start the game
+    bool initialize();  // Start the game
     void run();         // TimeCalc loop
     void cleanup(SDL_Window* window, SDL_Renderer* renderer);
-    int  getwindowsize(int width, int height) { return width, height; } // Clean up
-    int  getwindowsize(int width, int height) { return width, height; }
+    void  getwindowsize(int Width, int Height) {width =Width ,height=Height; } // Clean up
+   
     bool getrunning() { return running; }
 
 

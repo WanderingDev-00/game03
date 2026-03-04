@@ -6,18 +6,19 @@ class animation
 private:
     float timer = 0.0f;
     float speed = 0.1f;      // Duration per frame
-    int currentframe = 0;
-    int totalframes = 4;     // How many frames in this animation
-    int framewidth = 32;     // Size of ONE frame
-    int frameheight = 32;
-    int currentrow = 0;      // Which row in spritesheet
+    float currentframe = 0;
+    float totalframes = 4;     // How many frames in this animation
+    float framewidth = 32;     // Size of ONE frame
+    float frameheight = 32;
+    float currentrow = 0;   // Which row in spritesheet
+
 
 public:
     void animtimerupdate(float deltatime);
-    SDL_Rect getSrcRect();
+    SDL_FRect getSrcRect()const ;  // because const issue when used and to make sire no change in data
 
     //  Methods to configure animation
     void setAnimation(int row, int totalFrames);
     int getCurrentFrame() const { return currentframe; }
     int getTotalFrames() const { return totalframes; }
-}; 
+};  
