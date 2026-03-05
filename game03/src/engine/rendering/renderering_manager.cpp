@@ -1,9 +1,9 @@
 #include"rendering_manager.h"
 
 
-void Gamerender::init(TextureManager& texManager)
+void Gamerender::init() // need to be put in intiator in game folder 
 {
-    texMgr = &texManager;
+    texMgr;
 
     //  Add player to entity list
     entities.push_back(&play);
@@ -31,7 +31,7 @@ void Gamerender::drawAll(SDL_Renderer* renderer)
         if (entity->getType() == "player") {
             player* p = dynamic_cast<player*>(entity);
             SDL_FRect srcRect = p->getAnimationFrame();
-            SDL_Texture* tex = texMgr->gettex("player_spritesheet");
+            SDL_Texture* tex = texMgr.gettex("player_spritesheet");
 
             if (tex) {
                 SDL_FRect destRect = {

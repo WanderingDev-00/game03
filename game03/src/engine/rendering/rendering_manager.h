@@ -8,8 +8,8 @@
 class Gamerender
 {
 private:
-    player play;
-    TextureManager* texMgr = nullptr;
+    
+    TextureManager& texMgr = TextureManager::getInstance();
     std::vector<Entity*> entities;  // List of all entities
     // Private constructor - can't create instances from outside
     Gamerender() = default;
@@ -24,7 +24,7 @@ public:
         static Gamerender instance;  // Created only once
         return instance;
     }
-    void init(TextureManager& texManager);
+    void init();
     void preparerenderer(SDL_Renderer* renderer);
 
     // THIS IS updateAll() - You need to code it
@@ -32,5 +32,5 @@ public:
 
     void drawAll(SDL_Renderer* renderer);
 
-    player& getPlayer() { return play; }
+
 };
