@@ -10,7 +10,7 @@ find_package(SDL3_image REQUIRED)
 # Others are in their respective folders.
 set(HEADER_FILES
     "src/engine/core/game.h"
-       "src/engine/time/time_manager.h"  "src/engine/rendering/rendering_manager.h" "src/engine/rendering/texturemanager.h" "src/game/player/player.h" "src/engine/entity.h" "src/engine/animation/animation.h" )
+       "src/engine/time/time_manager.h"  "src/engine/rendering/rendering_manager.h" "src/engine/rendering/texturemanager.h" "src/game/player/player.h" "src/engine/entity.h" "src/engine/animation/animation.h"  "src/engine/config/configmanager.h")
 
 set(SOURCE_FILES
     "game03.cpp" 
@@ -24,6 +24,7 @@ target_compile_features(game03 PRIVATE cxx_std_20)
 
 # This lets you write #include "animtimer.h" instead of #include "header/animtimer.h"
 target_include_directories(game03 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+target_include_directories(game03 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # 5. Linking
 target_link_libraries(game03 PRIVATE 
