@@ -8,6 +8,7 @@
 class Gamerender
 {
 private:
+    player play;
     
     TextureManager& texMgr = TextureManager::getInstance();
     std::vector<Entity*> entities;  // List of all entities

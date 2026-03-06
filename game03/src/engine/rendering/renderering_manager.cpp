@@ -31,7 +31,7 @@ void Gamerender::drawAll(SDL_Renderer* renderer)
         if (entity->getType() == "player") {
             player* p = dynamic_cast<player*>(entity);
             SDL_FRect srcRect = p->getAnimationFrame();
-            SDL_Texture* tex = texMgr.gettex("player_spritesheet");
+            SDL_Texture* tex = texMgr.gettex("player_idle");
 
             if (tex) {
                 SDL_FRect destRect = {

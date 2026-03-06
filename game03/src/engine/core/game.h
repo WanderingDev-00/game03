@@ -10,9 +10,7 @@ class TextureManager;
 class Game
 {
 
-private: //std::unique_ptr<IRenderer> renderer;      // Could be SDL3, OpenGL, etc.
-    // std::unique_ptr<IAudioEngine> audio;      // Could be SDL_Mixer, OpenAL, etc.
-    // std::unique_ptr<IPhysicsEngine> physics; 
+private: 
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     int logh =320, logw=640, width=640, height=320;
