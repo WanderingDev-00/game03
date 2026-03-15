@@ -12,4 +12,5 @@ endif()
 project ("game03")
 
 add_subdirectory("game03")
+add_subdirectory("jsoncreatorquick")
 # TODO: Add tests and install targets if needed.
